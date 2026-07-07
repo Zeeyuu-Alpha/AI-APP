@@ -1,0 +1,653 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A0001010000000000000001 /* AITravelAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000001 /* AITravelAppApp.swift */; };
+		9A0001010000000000000002 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000002 /* AppContainer.swift */; };
+		9A0001010000000000000003 /* TravelHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000003 /* TravelHomeViewModel.swift */; };
+		9A0001010000000000000004 /* TravelHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000004 /* TravelHomeView.swift */; };
+		9A0001010000000000000005 /* HomeBottomPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000005 /* HomeBottomPanel.swift */; };
+		9A0001010000000000000006 /* PlaceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000006 /* PlaceCategory.swift */; };
+		9A0001010000000000000007 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000007 /* Place.swift */; };
+		9A0001010000000000000008 /* ParsedTravelQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000008 /* ParsedTravelQuery.swift */; };
+		9A0001010000000000000009 /* TripPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000009 /* TripPlan.swift */; };
+		9A0001010000000000000010 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000010 /* CheckIn.swift */; };
+		9A0001010000000000000011 /* GeoMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000011 /* GeoMath.swift */; };
+		9A0001010000000000000012 /* ZoomPOIPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000012 /* ZoomPOIPolicy.swift */; };
+		9A0001010000000000000013 /* SeedPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000013 /* SeedPlaces.swift */; };
+		9A0001010000000000000014 /* TravelAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000014 /* TravelAPIClient.swift */; };
+		9A0001010000000000000015 /* SemanticSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000015 /* SemanticSearchService.swift */; };
+		9A0001010000000000000016 /* TripPlanningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000016 /* TripPlanningService.swift */; };
+		9A0001010000000000000017 /* CheckInDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000017 /* CheckInDetector.swift */; };
+		9A0001010000000000000018 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000018 /* LocationManager.swift */; };
+		9A0001010000000000000019 /* SpeechInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000019 /* SpeechInputManager.swift */; };
+		9A0001010000000000000020 /* TravelMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000020 /* TravelMapView.swift */; };
+		9A0001010000000000000021 /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000021 /* SearchHeaderView.swift */; };
+		9A0001010000000000000022 /* PlaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000022 /* PlaceListView.swift */; };
+		9A0001010000000000000023 /* PlaceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000023 /* PlaceCardView.swift */; };
+		9A0001010000000000000024 /* TripPlanSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000024 /* TripPlanSheet.swift */; };
+		9A0001010000000000000025 /* CheckInHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000025 /* CheckInHistoryView.swift */; };
+		9A0001010000000000000026 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000026 /* Assets.xcassets */; };
+		9A0001010000000000000101 /* SemanticSearchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000101 /* SemanticSearchServiceTests.swift */; };
+		9A0001010000000000000102 /* TripPlanningServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0002010000000000000102 /* TripPlanningServiceTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9A0000D00000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0000010000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A0000040000000000000001;
+			remoteInfo = AITravelApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9A0000060000000000000001 /* AITravelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AITravelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0000070000000000000001 /* AITravelAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AITravelAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0002010000000000000001 /* AITravelAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AITravelAppApp.swift; sourceTree = "<group>"; };
+		9A0002010000000000000002 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		9A0002010000000000000003 /* TravelHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelHomeViewModel.swift; sourceTree = "<group>"; };
+		9A0002010000000000000004 /* TravelHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelHomeView.swift; sourceTree = "<group>"; };
+		9A0002010000000000000005 /* HomeBottomPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomPanel.swift; sourceTree = "<group>"; };
+		9A0002010000000000000006 /* PlaceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCategory.swift; sourceTree = "<group>"; };
+		9A0002010000000000000007 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		9A0002010000000000000008 /* ParsedTravelQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsedTravelQuery.swift; sourceTree = "<group>"; };
+		9A0002010000000000000009 /* TripPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlan.swift; sourceTree = "<group>"; };
+		9A0002010000000000000010 /* CheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
+		9A0002010000000000000011 /* GeoMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoMath.swift; sourceTree = "<group>"; };
+		9A0002010000000000000012 /* ZoomPOIPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomPOIPolicy.swift; sourceTree = "<group>"; };
+		9A0002010000000000000013 /* SeedPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPlaces.swift; sourceTree = "<group>"; };
+		9A0002010000000000000014 /* TravelAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAPIClient.swift; sourceTree = "<group>"; };
+		9A0002010000000000000015 /* SemanticSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticSearchService.swift; sourceTree = "<group>"; };
+		9A0002010000000000000016 /* TripPlanningService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlanningService.swift; sourceTree = "<group>"; };
+		9A0002010000000000000017 /* CheckInDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInDetector.swift; sourceTree = "<group>"; };
+		9A0002010000000000000018 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9A0002010000000000000019 /* SpeechInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechInputManager.swift; sourceTree = "<group>"; };
+		9A0002010000000000000020 /* TravelMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMapView.swift; sourceTree = "<group>"; };
+		9A0002010000000000000021 /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		9A0002010000000000000022 /* PlaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListView.swift; sourceTree = "<group>"; };
+		9A0002010000000000000023 /* PlaceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCardView.swift; sourceTree = "<group>"; };
+		9A0002010000000000000024 /* TripPlanSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlanSheet.swift; sourceTree = "<group>"; };
+		9A0002010000000000000025 /* CheckInHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInHistoryView.swift; sourceTree = "<group>"; };
+		9A0002010000000000000026 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A0002010000000000000101 /* SemanticSearchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticSearchServiceTests.swift; sourceTree = "<group>"; };
+		9A0002010000000000000102 /* TripPlanningServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlanningServiceTests.swift; sourceTree = "<group>"; };
+		9A0002010000000000000201 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9A0002010000000000000202 /* Architecture.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Architecture.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A00000A0000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A00000B0000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A0000020000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				9A0000200000000000000001 /* AITravelApp */,
+				9A0000300000000000000001 /* AITravelAppTests */,
+				9A0000400000000000000001 /* Docs */,
+				9A0002010000000000000201 /* README.md */,
+				9A0000030000000000000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A0000030000000000000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A0000060000000000000001 /* AITravelApp.app */,
+				9A0000070000000000000001 /* AITravelAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A0000200000000000000001 /* AITravelApp */ = {
+			isa = PBXGroup;
+			children = (
+				9A0000210000000000000001 /* App */,
+				9A0000220000000000000001 /* Core */,
+				9A0000260000000000000001 /* Features */,
+				9A0000270000000000000001 /* Resources */,
+			);
+			path = AITravelApp;
+			sourceTree = "<group>";
+		};
+		9A0000210000000000000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000001 /* AITravelAppApp.swift */,
+				9A0002010000000000000002 /* AppContainer.swift */,
+				9A0002010000000000000003 /* TravelHomeViewModel.swift */,
+				9A0002010000000000000004 /* TravelHomeView.swift */,
+				9A0002010000000000000005 /* HomeBottomPanel.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9A0000220000000000000001 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9A0000230000000000000001 /* Models */,
+				9A0000240000000000000001 /* Services */,
+				9A0000250000000000000001 /* Utilities */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		9A0000230000000000000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000006 /* PlaceCategory.swift */,
+				9A0002010000000000000007 /* Place.swift */,
+				9A0002010000000000000008 /* ParsedTravelQuery.swift */,
+				9A0002010000000000000009 /* TripPlan.swift */,
+				9A0002010000000000000010 /* CheckIn.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9A0000240000000000000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000013 /* SeedPlaces.swift */,
+				9A0002010000000000000014 /* TravelAPIClient.swift */,
+				9A0002010000000000000015 /* SemanticSearchService.swift */,
+				9A0002010000000000000016 /* TripPlanningService.swift */,
+				9A0002010000000000000017 /* CheckInDetector.swift */,
+				9A0002010000000000000018 /* LocationManager.swift */,
+				9A0002010000000000000019 /* SpeechInputManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9A0000250000000000000001 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000011 /* GeoMath.swift */,
+				9A0002010000000000000012 /* ZoomPOIPolicy.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		9A0000260000000000000001 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				9A0000280000000000000001 /* Map */,
+				9A0000290000000000000001 /* Search */,
+				9A00002A0000000000000001 /* Trip */,
+				9A00002B0000000000000001 /* CheckIn */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		9A0000270000000000000001 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000026 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9A0000280000000000000001 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000020 /* TravelMapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		9A0000290000000000000001 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000021 /* SearchHeaderView.swift */,
+				9A0002010000000000000022 /* PlaceListView.swift */,
+				9A0002010000000000000023 /* PlaceCardView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		9A00002A0000000000000001 /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000024 /* TripPlanSheet.swift */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
+		9A00002B0000000000000001 /* CheckIn */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000025 /* CheckInHistoryView.swift */,
+			);
+			path = CheckIn;
+			sourceTree = "<group>";
+		};
+		9A0000300000000000000001 /* AITravelAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000101 /* SemanticSearchServiceTests.swift */,
+				9A0002010000000000000102 /* TripPlanningServiceTests.swift */,
+			);
+			path = AITravelAppTests;
+			sourceTree = "<group>";
+		};
+		9A0000400000000000000001 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				9A0002010000000000000202 /* Architecture.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A0000040000000000000001 /* AITravelApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A0000130000000000000001 /* Build configuration list for PBXNativeTarget "AITravelApp" */;
+			buildPhases = (
+				9A0000080000000000000001 /* Sources */,
+				9A00000A0000000000000001 /* Frameworks */,
+				9A00000C0000000000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AITravelApp;
+			productName = AITravelApp;
+			productReference = 9A0000060000000000000001 /* AITravelApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9A0000050000000000000001 /* AITravelAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A0000160000000000000001 /* Build configuration list for PBXNativeTarget "AITravelAppTests" */;
+			buildPhases = (
+				9A0000090000000000000001 /* Sources */,
+				9A00000B0000000000000001 /* Frameworks */,
+				9A00000D0000000000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A0000D10000000000000001 /* PBXTargetDependency */,
+			);
+			name = AITravelAppTests;
+			productName = AITravelAppTests;
+			productReference = 9A0000070000000000000001 /* AITravelAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A0000010000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					9A0000040000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					9A0000050000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 9A0000040000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = 9A0000100000000000000001 /* Build configuration list for PBXProject "AITravelApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A0000020000000000000001;
+			productRefGroup = 9A0000030000000000000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A0000040000000000000001 /* AITravelApp */,
+				9A0000050000000000000001 /* AITravelAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A00000C0000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0001010000000000000026 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A00000D0000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A0000080000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0001010000000000000001 /* AITravelAppApp.swift in Sources */,
+				9A0001010000000000000002 /* AppContainer.swift in Sources */,
+				9A0001010000000000000003 /* TravelHomeViewModel.swift in Sources */,
+				9A0001010000000000000004 /* TravelHomeView.swift in Sources */,
+				9A0001010000000000000005 /* HomeBottomPanel.swift in Sources */,
+				9A0001010000000000000006 /* PlaceCategory.swift in Sources */,
+				9A0001010000000000000007 /* Place.swift in Sources */,
+				9A0001010000000000000008 /* ParsedTravelQuery.swift in Sources */,
+				9A0001010000000000000009 /* TripPlan.swift in Sources */,
+				9A0001010000000000000010 /* CheckIn.swift in Sources */,
+				9A0001010000000000000011 /* GeoMath.swift in Sources */,
+				9A0001010000000000000012 /* ZoomPOIPolicy.swift in Sources */,
+				9A0001010000000000000013 /* SeedPlaces.swift in Sources */,
+				9A0001010000000000000014 /* TravelAPIClient.swift in Sources */,
+				9A0001010000000000000015 /* SemanticSearchService.swift in Sources */,
+				9A0001010000000000000016 /* TripPlanningService.swift in Sources */,
+				9A0001010000000000000017 /* CheckInDetector.swift in Sources */,
+				9A0001010000000000000018 /* LocationManager.swift in Sources */,
+				9A0001010000000000000019 /* SpeechInputManager.swift in Sources */,
+				9A0001010000000000000020 /* TravelMapView.swift in Sources */,
+				9A0001010000000000000021 /* SearchHeaderView.swift in Sources */,
+				9A0001010000000000000022 /* PlaceListView.swift in Sources */,
+				9A0001010000000000000023 /* PlaceCardView.swift in Sources */,
+				9A0001010000000000000024 /* TripPlanSheet.swift in Sources */,
+				9A0001010000000000000025 /* CheckInHistoryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0000090000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0001010000000000000101 /* SemanticSearchServiceTests.swift in Sources */,
+				9A0001010000000000000102 /* TripPlanningServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A0000D10000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A0000040000000000000001 /* AITravelApp */;
+			targetProxy = 9A0000D00000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9A0000110000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9A0000120000000000000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A0000140000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "AI Travel";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Voice search uses the microphone to transcribe travel requests.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used to show nearby places and detect trip stop check-ins.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech recognition converts spoken travel requests into text.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeyu.AITravelApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9A0000150000000000000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "AI Travel";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Voice search uses the microphone to transcribe travel requests.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used to show nearby places and detect trip stop check-ins.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech recognition converts spoken travel requests into text.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeyu.AITravelApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9A0000170000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeyu.AITravelAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AITravelApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AITravelApp";
+			};
+			name = Debug;
+		};
+		9A0000180000000000000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeyu.AITravelAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AITravelApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AITravelApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A0000100000000000000001 /* Build configuration list for PBXProject "AITravelApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0000110000000000000001 /* Debug */,
+				9A0000120000000000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A0000130000000000000001 /* Build configuration list for PBXNativeTarget "AITravelApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0000140000000000000001 /* Debug */,
+				9A0000150000000000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A0000160000000000000001 /* Build configuration list for PBXNativeTarget "AITravelAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0000170000000000000001 /* Debug */,
+				9A0000180000000000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A0000010000000000000001 /* Project object */;
+}

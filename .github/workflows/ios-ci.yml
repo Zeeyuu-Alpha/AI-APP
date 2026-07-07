@@ -1,0 +1,66 @@
+name: iOS CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Build and Test
+    runs-on: macos-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: |
+          xcodebuild -version
+          xcodebuild -showsdks
+
+      - name: Select iPhone simulator
+        id: simulator
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/select_simulator.py <<'PY'
+          import json
+          import sys
+
+          devices = json.load(sys.stdin)["devices"]
+          preferred = ["iPhone 16 Pro", "iPhone 16", "iPhone 15 Pro", "iPhone 15"]
+          available = [
+              device["name"]
+              for runtime in devices.values()
+              for device in runtime
+              if device.get("isAvailable")
+          ]
+
+          for name in preferred:
+              if name in available:
+                  print(name)
+                  break
+          else:
+              iphones = [name for name in available if name.startswith("iPhone")]
+              if not iphones:
+                  raise SystemExit("No available iPhone simulator found")
+              print(iphones[0])
+          PY
+          SIM_NAME="$(xcrun simctl list devices available -j | python3 /tmp/select_simulator.py)"
+          echo "name=$SIM_NAME" >> "$GITHUB_OUTPUT"
+          echo "Using simulator: $SIM_NAME"
+
+      - name: Build and run tests
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project AITravelApp.xcodeproj \
+            -scheme AITravelApp \
+            -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }}" \
+            CODE_SIGNING_ALLOWED=NO

@@ -29,24 +29,20 @@ final class MockTravelAPIClient: TravelAPIClient {
         let radius = ZoomPOIPolicy.radiusMeters(for: zoomLevel)
         let selectedCategories = Set(categories)
 
-        let nearby = seedPlaces
-            .filter { selectedCategories.contains($0.category) }
-            .filter { $0.distanceMeters(to: center) <= radius }
-            .sorted { lhs, rhs in
-                lhs.distanceMeters(to: center) < rhs.distanceMeters(to: center)
-            }
+        let categoryMatches = seedPlaces.filter { place in
+            selectedCategories.contains(place.category)
+        }
+        let nearby = categoryMatches.filter { place in
+            place.distanceMeters(to: center) <= radius
+        }
+        let sortedNearby = sortByDistance(nearby, from: center)
 
-        if !nearby.isEmpty {
-            return Array(nearby.prefix(24))
+        if !sortedNearby.isEmpty {
+            return Array(sortedNearby.prefix(24))
         }
 
-        return seedPlaces
-            .filter { selectedCategories.contains($0.category) }
-            .sorted { lhs, rhs in
-                lhs.distanceMeters(to: center) < rhs.distanceMeters(to: center)
-            }
-            .prefix(8)
-            .map { $0 }
+        let fallback = sortByDistance(categoryMatches, from: center)
+        return Array(fallback.prefix(8))
     }
 
     func searchPlaces(
@@ -58,32 +54,49 @@ final class MockTravelAPIClient: TravelAPIClient {
             : Set(parsedQuery.categories)
         let maxDistance = parsedQuery.maxDistanceMeters ?? 25_000
 
-        let matching = seedPlaces
-            .filter { categories.contains($0.category) }
-            .filter { place in
-                place.distanceMeters(to: center) <= maxDistance || maxDistance >= 500_000
-            }
-            .map { place in
-                RankedPlace(
-                    place: place,
-                    score: score(place, query: parsedQuery, center: center)
-                )
-            }
-            .sorted { $0.score > $1.score }
-            .map(\.place)
+        let categoryMatches = seedPlaces.filter { place in
+            categories.contains(place.category)
+        }
+        let distanceMatches = categoryMatches.filter { place in
+            let distance = place.distanceMeters(to: center)
+            return distance <= maxDistance || maxDistance >= 500_000
+        }
+        let matching = rankPlaces(distanceMatches, query: parsedQuery, center: center)
 
         if !matching.isEmpty {
             return Array(matching.prefix(12))
         }
 
-        return seedPlaces
-            .filter { categories.contains($0.category) }
-            .map { place in
-                RankedPlace(place: place, score: score(place, query: parsedQuery, center: center))
-            }
-            .sorted { $0.score > $1.score }
-            .prefix(12)
-            .map(\.place)
+        let fallback = rankPlaces(categoryMatches, query: parsedQuery, center: center)
+        return Array(fallback.prefix(12))
+    }
+
+    private func sortByDistance(
+        _ places: [Place],
+        from center: CLLocationCoordinate2D
+    ) -> [Place] {
+        places.sorted { lhs, rhs in
+            lhs.distanceMeters(to: center) < rhs.distanceMeters(to: center)
+        }
+    }
+
+    private func rankPlaces(
+        _ places: [Place],
+        query: ParsedTravelQuery,
+        center: CLLocationCoordinate2D
+    ) -> [Place] {
+        let rankedPlaces = places.map { place in
+            RankedPlace(
+                place: place,
+                score: score(place, query: query, center: center)
+            )
+        }
+        let sortedPlaces = rankedPlaces.sorted { lhs, rhs in
+            lhs.score > rhs.score
+        }
+        return sortedPlaces.map { rankedPlace in
+            rankedPlace.place
+        }
     }
 
     private func score(
@@ -110,13 +123,17 @@ final class MockTravelAPIClient: TravelAPIClient {
 
         let placeTokens = Set(place.tags + [place.category.rawValue, place.name.lowercased()])
         let matched = constraints.filter { constraint in
-            placeTokens.contains { token in
-                token.localizedCaseInsensitiveContains(constraint)
-                    || constraint.localizedCaseInsensitiveContains(token)
-            }
+            containsSemanticMatch(tokens: placeTokens, constraint: constraint)
         }
 
         return min(1, 0.45 + Double(matched.count) / Double(max(constraints.count, 1)))
+    }
+
+    private func containsSemanticMatch(tokens: Set<String>, constraint: String) -> Bool {
+        tokens.contains { token in
+            token.localizedCaseInsensitiveContains(constraint)
+                || constraint.localizedCaseInsensitiveContains(token)
+        }
     }
 
     private func priceMatchScore(place: Place, budget: BudgetLevel?) -> Double {

@@ -125,7 +125,7 @@ final class MockTravelAPIClient: TravelAPIClient {
         let semanticScore = semanticMatchScore(place: place, constraints: query.constraints)
         let distanceScore = max(0, 1 - place.distanceMeters(to: center) / 20_000)
         let ratingScore = (place.rating ?? 4.0) / 5.0
-        let openNowScore = place.isOpenNow == false ? 0 : 1
+        let openNowScore: Double = place.isOpenNow == false ? 0.0 : 1.0
         let priceScore = priceMatchScore(place: place, budget: query.budget)
         let weights = query.rankingPreference
 

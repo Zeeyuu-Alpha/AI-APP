@@ -87,7 +87,10 @@ final class SpeechInputManager: NSObject, ObservableObject {
     private func requestAuthorization() async -> Bool {
         async let speechAuthorized = requestSpeechAuthorization()
         async let microphoneAuthorized = requestMicrophoneAuthorization()
-        return await speechAuthorized && microphoneAuthorized
+
+        let hasSpeechAuthorization = await speechAuthorized
+        let hasMicrophoneAuthorization = await microphoneAuthorized
+        return hasSpeechAuthorization && hasMicrophoneAuthorization
     }
 
     private func requestSpeechAuthorization() async -> Bool {

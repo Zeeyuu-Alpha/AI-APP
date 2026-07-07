@@ -27,14 +27,17 @@ final class MockTravelAPIClient: TravelAPIClient {
         categories: [PlaceCategory]
     ) async throws -> [Place] {
         let radius = ZoomPOIPolicy.radiusMeters(for: zoomLevel)
-        let selectedCategories = Set(categories)
 
-        let categoryMatches = seedPlaces.filter { place in
-            selectedCategories.contains(place.category)
+        var categoryMatches: [Place] = []
+        for place in seedPlaces where categories.contains(place.category) {
+            categoryMatches.append(place)
         }
-        let nearby = categoryMatches.filter { place in
-            place.distanceMeters(to: center) <= radius
+
+        var nearby: [Place] = []
+        for place in categoryMatches where place.distanceMeters(to: center) <= radius {
+            nearby.append(place)
         }
+
         let sortedNearby = sortByDistance(nearby, from: center)
 
         if !sortedNearby.isEmpty {
@@ -49,18 +52,27 @@ final class MockTravelAPIClient: TravelAPIClient {
         parsedQuery: ParsedTravelQuery,
         center: CLLocationCoordinate2D
     ) async throws -> [Place] {
-        let categories = parsedQuery.categories.isEmpty
-            ? Set(PlaceCategory.allCases)
-            : Set(parsedQuery.categories)
+        let selectedCategories: [PlaceCategory]
+        if parsedQuery.categories.isEmpty {
+            selectedCategories = PlaceCategory.allCases
+        } else {
+            selectedCategories = parsedQuery.categories
+        }
         let maxDistance = parsedQuery.maxDistanceMeters ?? 25_000
 
-        let categoryMatches = seedPlaces.filter { place in
-            categories.contains(place.category)
+        var categoryMatches: [Place] = []
+        for place in seedPlaces where selectedCategories.contains(place.category) {
+            categoryMatches.append(place)
         }
-        let distanceMatches = categoryMatches.filter { place in
+
+        var distanceMatches: [Place] = []
+        for place in categoryMatches {
             let distance = place.distanceMeters(to: center)
-            return distance <= maxDistance || maxDistance >= 500_000
+            if distance <= maxDistance || maxDistance >= 500_000 {
+                distanceMatches.append(place)
+            }
         }
+
         let matching = rankPlaces(distanceMatches, query: parsedQuery, center: center)
 
         if !matching.isEmpty {
@@ -75,7 +87,7 @@ final class MockTravelAPIClient: TravelAPIClient {
         _ places: [Place],
         from center: CLLocationCoordinate2D
     ) -> [Place] {
-        places.sorted { lhs, rhs in
+        return places.sorted { lhs, rhs in
             lhs.distanceMeters(to: center) < rhs.distanceMeters(to: center)
         }
     }
@@ -85,18 +97,24 @@ final class MockTravelAPIClient: TravelAPIClient {
         query: ParsedTravelQuery,
         center: CLLocationCoordinate2D
     ) -> [Place] {
-        let rankedPlaces = places.map { place in
-            RankedPlace(
+        var rankedPlaces: [RankedPlace] = []
+        for place in places {
+            let rankedPlace = RankedPlace(
                 place: place,
                 score: score(place, query: query, center: center)
             )
+            rankedPlaces.append(rankedPlace)
         }
+
         let sortedPlaces = rankedPlaces.sorted { lhs, rhs in
             lhs.score > rhs.score
         }
-        return sortedPlaces.map { rankedPlace in
-            rankedPlace.place
+
+        var resultPlaces: [Place] = []
+        for rankedPlace in sortedPlaces {
+            resultPlaces.append(rankedPlace.place)
         }
+        return resultPlaces
     }
 
     private func score(
@@ -111,29 +129,44 @@ final class MockTravelAPIClient: TravelAPIClient {
         let priceScore = priceMatchScore(place: place, budget: query.budget)
         let weights = query.rankingPreference
 
-        return semanticScore * weights.semanticMatch
-            + distanceScore * weights.distance
-            + ratingScore * weights.rating
-            + priceScore * weights.popularity
-            + openNowScore * weights.openNow
+        let weightedSemanticScore = semanticScore * weights.semanticMatch
+        let weightedDistanceScore = distanceScore * weights.distance
+        let weightedRatingScore = ratingScore * weights.rating
+        let weightedPriceScore = priceScore * weights.popularity
+        let weightedOpenNowScore = openNowScore * weights.openNow
+
+        return weightedSemanticScore
+            + weightedDistanceScore
+            + weightedRatingScore
+            + weightedPriceScore
+            + weightedOpenNowScore
     }
 
     private func semanticMatchScore(place: Place, constraints: [String]) -> Double {
         guard !constraints.isEmpty else { return 0.7 }
 
-        let placeTokens = Set(place.tags + [place.category.rawValue, place.name.lowercased()])
-        let matched = constraints.filter { constraint in
-            containsSemanticMatch(tokens: placeTokens, constraint: constraint)
+        var placeTokens = place.tags
+        placeTokens.append(place.category.rawValue)
+        placeTokens.append(place.name.lowercased())
+
+        var matchCount = 0
+        for constraint in constraints where containsSemanticMatch(tokens: placeTokens, constraint: constraint) {
+            matchCount += 1
         }
 
-        return min(1, 0.45 + Double(matched.count) / Double(max(constraints.count, 1)))
+        return min(1, 0.45 + Double(matchCount) / Double(max(constraints.count, 1)))
     }
 
-    private func containsSemanticMatch(tokens: Set<String>, constraint: String) -> Bool {
-        tokens.contains { token in
-            token.localizedCaseInsensitiveContains(constraint)
-                || constraint.localizedCaseInsensitiveContains(token)
+    private func containsSemanticMatch(tokens: [String], constraint: String) -> Bool {
+        for token in tokens {
+            if token.localizedCaseInsensitiveContains(constraint) {
+                return true
+            }
+            if constraint.localizedCaseInsensitiveContains(token) {
+                return true
+            }
         }
+        return false
     }
 
     private func priceMatchScore(place: Place, budget: BudgetLevel?) -> Double {

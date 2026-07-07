@@ -117,10 +117,10 @@ final class SemanticSearchService {
     }
 
     private func duration(from text: String) -> Int? {
-        if containsAny(text, tokens: ["half day", "半天"]) {
+        if containsAny(text, tokens: ["half day", "half-day", "半天"]) {
             return 240
         }
-        if containsAny(text, tokens: ["full day", "one day", "一天"]) {
+        if containsAny(text, tokens: ["full day", "full-day", "one day", "一天"]) {
             return 480
         }
         if containsAny(text, tokens: ["4 hours", "4小时", "4 小时"]) {
